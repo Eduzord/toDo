@@ -30,6 +30,7 @@ const criarTarefa = (evento) => {
 
     tarefa.innerHTML = conteudo;
     tarefa.appendChild(BotaoConclui());
+    tarefa.appendChild(BotaoDeleta());
     listaU.appendChild(tarefa);
     
     input.value = "";
@@ -37,20 +38,6 @@ const criarTarefa = (evento) => {
     
     // Preciso pegar a const conteúdo, inseri-la dentro de uma tag <li> e inserir essa tag <li> na <ul>.
     
-    // if(valor === ""){
-        //     alert("Por favor, preencha o campo com uma tarefa.")
-        //     input.focus();
-        //     return;
-        // };
-        
-        
-        // tarefa += `<li><p class = "task">${valor}</p></li>`
-        // listaU.innerHTML = tarefa;
-        
-        // input.value = "";
-        // input.focus();
-        
-        
     }
     // Evento
     
@@ -65,11 +52,40 @@ const BotaoConclui = () => {
     botaoConclui.classList.add('check-button');
     botaoConclui.innerText = 'Concluir';
 
-    botaoConclui.addEventListener('click',() => {
-        console.log("Fui clicado");
-    });
+    botaoConclui.addEventListener('click', concluirTarefa);
     return botaoConclui;
 
 };
+const BotaoDeleta = () => {
+    const botaoDeleta = document.createElement('button');
+    botaoDeleta.classList.add('delete-button');
+    botaoDeleta.innerText = 'Excluir';
+
+    botaoDeleta.addEventListener('click', excluirTarefa);
+    return botaoDeleta;
+
+};
+
+const concluirTarefa = (evento) =>{
+    //acessa o elemento que acionou o evento
+    const eventoAcionado = evento.target;
+    //acessa o elemento pai do que acionou o evento, no caso o <li>
+    const tarefaCompleta = eventoAcionado.parentElement
+
+    tarefaCompleta.classList.toggle('done'); //Devolve true ou false
+
+};
+
+const excluirTarefa = (evento) =>{
+    //acessa o elemento que acionou o evento
+    const eventoAcionado = evento.target;
+    //acessa o elemento pai do que acionou o evento, no caso o <li>
+    const tarefaCompleta = eventoAcionado.parentElement;
+
+    const listaDeTarefas = tarefaCompleta.parentElement;
+    listaDeTarefas.removeChild(tarefaCompleta); //Devolve true ou false
+
+};
+
 
 // Espera um evento, e o que vai acontecer

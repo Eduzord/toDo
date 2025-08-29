@@ -9,7 +9,8 @@
 
 // let tarefa = ""
 
-
+import BotaoConclui from "./componentes/concluiTarefa.js";
+import BotaoDeleta from "./componentes/deletaTarefa.js";
 
 
 const criarTarefa = (evento) => {
@@ -47,45 +48,9 @@ const criarTarefa = (evento) => {
 const btnNovaTarefa = document.querySelector("[data-form-button]");
 btnNovaTarefa.addEventListener('click', criarTarefa);
 
-const BotaoConclui = () => {
-    const botaoConclui = document.createElement('button');
-    botaoConclui.classList.add('check-button');
-    botaoConclui.innerText = 'Concluir';
 
-    botaoConclui.addEventListener('click', concluirTarefa);
-    return botaoConclui;
 
-};
-const BotaoDeleta = () => {
-    const botaoDeleta = document.createElement('button');
-    botaoDeleta.classList.add('delete-button');
-    botaoDeleta.innerText = 'Excluir';
 
-    botaoDeleta.addEventListener('click', excluirTarefa);
-    return botaoDeleta;
-
-};
-
-const concluirTarefa = (evento) =>{
-    //acessa o elemento que acionou o evento
-    const eventoAcionado = evento.target;
-    //acessa o elemento pai do que acionou o evento, no caso o <li>
-    const tarefaCompleta = eventoAcionado.parentElement
-
-    tarefaCompleta.classList.toggle('done'); //Devolve true ou false
-
-};
-
-const excluirTarefa = (evento) =>{
-    //acessa o elemento que acionou o evento
-    const eventoAcionado = evento.target;
-    //acessa o elemento pai do que acionou o evento, no caso o <li>
-    const tarefaCompleta = eventoAcionado.parentElement;
-
-    const listaDeTarefas = tarefaCompleta.parentElement;
-    listaDeTarefas.removeChild(tarefaCompleta); //Devolve true ou false
-
-};
 
 
 // Espera um evento, e o que vai acontecer
